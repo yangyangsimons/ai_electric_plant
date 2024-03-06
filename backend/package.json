@@ -23,6 +23,9 @@
   "devDependencies": {
     "@faker-js/faker": "^6.0.0-alpha.7"
   },
+  "engines": {
+    "node": ">=16.15.1"
+  },
   "author": "Deepak Singh Kushwah",
   "license": "ISC"
 }

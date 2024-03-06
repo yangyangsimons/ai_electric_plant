@@ -25,6 +25,7 @@ function LoginForm(props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        console.log('submitting form');
         dispatch({ type: 'SET_LOADING' });
         const s = async () => {
             const x = await signIn(email, password);

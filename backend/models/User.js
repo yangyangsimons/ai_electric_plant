@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    require: [true, "Please add name"],
+    required: [true, "Please add name"],
   },
 
   email: {
@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["user", "publisher","admin"],
+    enum: ["user", "publisher", "admin"],
     default: "user",
   },
   password: {
@@ -36,7 +36,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Duplicate the ID field.
-UserSchema.virtual('id').get(function(){
+UserSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
 
@@ -49,7 +49,7 @@ UserSchema.set('toJSON', {
 UserSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-  //next();
+  next();
 });
 
 // sign JWT and return
@@ -60,8 +60,8 @@ UserSchema.methods.getSignedJwtToken = function () {
 };
 
 // match password
-UserSchema.methods.matchPassword = async function(enteredPassword){
-    return await bcrypt.compare(enteredPassword, this.password);
+UserSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
 }
 
 // create virtual || reverse populate

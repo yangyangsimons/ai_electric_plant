@@ -3,7 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const color = require("colors");
 const connectDB = require("./config/db");
-const errorHandler= require("./middlewares/error");
+const errorHandler = require("./middlewares/error");
 const cookieParser = require("cookie-parser");
 const cors = require('cors');
 
@@ -11,7 +11,7 @@ const path = require("path");
 dotenv.config({ path: "./config/config.env" });
 
 
-const db =  require("./config/db");
+const db = require("./config/db");
 const app = express();
 
 // cors
@@ -55,7 +55,7 @@ const server = app.listen(port, () => {
 });
 
 // handle unhandle rejections
-process.on('unhandledRejection', (err, promise)=>{
-    console.log(`Errpr: ${err.message}`.red);
-    server.close(()=>process.exit(1));
+process.on('unhandledRejection', (err, promise) => {
+  console.log(`Errpr: ${err.message}`.red);
+  server.close(() => process.exit(1));
 });
