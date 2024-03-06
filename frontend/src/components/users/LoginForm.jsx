@@ -4,7 +4,9 @@ import UsersContext from '../../context/users/UsersContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-
+import styles from 'css/loginForm.module.scss'
+import { ReactComponent as UserIcon } from 'assets/icon/user.svg';
+import { ReactComponent as PasswordIcon } from 'assets/icon/password.svg';
 function LoginForm(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -48,29 +50,27 @@ function LoginForm(props) {
     }
 
 
-    const loginForm = <form onSubmit={submitHandler}>
-        <div className="card">
-            <div className="card-header">账号密码登录</div>
-            <div className="card-body">
+    const loginForm = <form onSubmit={submitHandler} className={styles.container}>
+        <div className={styles.login}>
+            <div className={styles.header}>账号密码登录</div>
+            <div className={styles.body}>
                 <table className="table table-borderless">
                     <tbody>
                         <tr>
-                            <td><input className='form-control' placeholder='Email' type="email" value={email} onChange={(e) => setEmail(e.target.value)} /></td>
+                            <td ><span><UserIcon className={styles.icon} /></span><input className={`form-control ${styles.inputStyle}`} placeholder='请输入账号 / 邮箱' type="email" value={email} onChange={(e) => setEmail(e.target.value)} /></td>
                         </tr>
                         <tr>
-                            <td><input className='form-control' placeholder='Password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} /></td>
+                            <td><span><PasswordIcon className={styles.icon} /></span><input className={`form-control ${styles.inputStyle}`} placeholder='请输入密码' type="password" value={password} onChange={(e) => setPassword(e.target.value)} /></td>
                         </tr>
                         <tr>
-                            <td>
-                                <button type='submit' className='btn btn-primary'>登录</button>
-                            </td>
+                            <button type='submit' className={`btn btn-primary ${styles.loginSubmit}`}>登录</button>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-    </form>;
+    </form >;
     const logout = (
         <div className='card'>
             <div className="card-header">User</div>

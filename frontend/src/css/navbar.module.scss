@@ -1,0 +1,70 @@
+@mixin heightAlign {
+    height: 96px;
+    line-height: 96x;
+}
+.header {
+    background-color: #130c2d;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: 0;
+    left: 0;
+    @include heightAlign;
+    .logoContainer {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .logo {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+        .title {
+            font-size: 34px;
+            font-weight: 500;
+        }
+    }
+    .menu {
+        position: absolute;
+        top: 0;
+        left: 30%;
+        height: 100%;
+        display: flex;
+        gap: 3rem;
+        justify-content: space-between;
+        align-items: center;
+        font-family: PingFang SC;
+        font-weight: 400;
+        font-size: 20px;
+        li {
+            cursor: pointer;
+            transition: all 0.3s;
+            &:hover {
+                color: #f1c40f;
+            }
+
+            list-style: none;
+            a {
+                text-decoration: none;
+                color: #ffffff;
+            }
+            a :active {
+                color: red;
+            }
+        }
+    }
+    .user {
+        button {
+            margin-right: 10px;
+            color: #ffffff;
+            border-radius: 5px;
+            height: 48px;
+            width: 144px;
+            background: linear-gradient(303.03deg, #7d2bf6 -8.94%, #f526c9 100.22%);
+        }
+    }
+}
