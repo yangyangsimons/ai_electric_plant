@@ -35,7 +35,7 @@ export default function Navbar() {
                     <Link to='/'>首页</Link>
                 </li>
                 <li>
-                    <Link to='/'>场景</Link>
+                    <Link to='/scene'>场景</Link>
                 </li>
             </ul>
             <div className={styles.user}>
