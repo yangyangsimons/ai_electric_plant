@@ -1,9 +1,12 @@
 import React from 'react'
-import EnvironmentOverview from 'components/EnvironmentMonitor/Overview'
+import LeftNav from 'components/shared/LeftNav';
+import Overview from './Overview/Overview';
+
 export default function Scene() {
     return (
         <div>
-            <EnvironmentOverview />
+            <LeftNav />
+            <Overview />
         </div>
     )
 }

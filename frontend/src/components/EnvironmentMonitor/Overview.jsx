@@ -15,7 +15,6 @@ export default function Overview() {
     //         const value = event.detail[key];
     //         const newInfo = { ...info, [key]: value };
     //         // dispatch(setInfo(newInfo));
-
     //     };
 
     //     window.addEventListener('TrafficInfoChanged', handleTrafficInfoChange);
