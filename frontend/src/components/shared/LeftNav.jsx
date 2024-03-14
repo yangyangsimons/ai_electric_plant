@@ -5,11 +5,10 @@ import EnvironmentMonitor from 'components/EnvironmentMonitor/Overview';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function Header() {
     return (
-        <header className='header'>
-            <ul className='nav-left'>
-                <li><Link to='/monitor'>规划预演</Link></li>
-                <li><Link to='/junction'>路口优化</Link></li>
-                <li><Link to='/'>自动驾驶</Link></li>
+        <header className={styles.header}>
+            <ul className={styles.navLeft}>
+                <li><Link to='/monitor'>实时监测</Link></li>
+                <li><Link to='/junction'>重点预测</Link></li>
             </ul>
             {/* <Routes>
                 <Route path='/monitor' element={<EnvironmentMonitor />} />

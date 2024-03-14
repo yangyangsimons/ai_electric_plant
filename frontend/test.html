@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./public/amrt_h5_v1.0.7.10/app.js" id="AMRT"></script>
+</head>
+
+<body>
+
+    <body style="padding: 0; margin: 0;">
+        <div id="container" style="width: 100%;height: 100vh;" />
+    </body>
+    <script>
+        //鉴权参数
+        const param = {
+            appkey: 'cZjyzeJodtLW',
+            appsecret: 'CuInETLvyH4r8ghxez2tPWdBsYRwU37J'
+        }
+        //创建一个场景
+        const viewer = new AMRT.Viewer('container', { offline: true })
+        const path = 'http://localhost:3000/api/public/1763576691151736832_AMRT'
+
+        //通过老子云平台 ID 加载一个模型
+        viewer.largeSceneLoader2.load(path)
+    </script>
+</body>
+
+</html>

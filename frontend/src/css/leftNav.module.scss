@@ -1,27 +1,27 @@
 @import "common.scss";
 
 header.header {
-    @include titleImage;
-    position: relative;
+    // @include titleImage;
     position: absolute;
-    top: 0;
     left: 0;
     z-index: 2;
+    width: 200px;
+    height: 80%;
     .title {
         @include titleFont;
     }
 
     ul {
-        width: 32rem;
+        height: 100%;
+        // border: 1px solid red;
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         font-size: 1.3rem;
-        position: absolute;
-        right: 0.7rem;
-        top: 3.5rem;
         z-index: 3;
         li {
+            margin: 20px 0;
             $lineHeight: 4rem;
             width: 8rem;
             height: $lineHeight;
