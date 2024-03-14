@@ -1,5 +1,6 @@
 @use "./common.scss" as common;
 .overview {
+    @include common.bottomElementSize;
     width: 300px;
     display: flex;
     flex-direction: column;
