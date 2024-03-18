@@ -6,26 +6,18 @@ import Navbar from "./components/shared/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Scene from "./Layout/Scene";
 import Main from "./Layout/Main";
+import Prediction from "./Layout/Prediction/Prediction";
 
-const MainScene = () => {
-  return (
-    <>
-      <Navbar />
-      <Scene />
-    </>
-  )
-
-
-}
 export default function App() {
   return (
     <div className={styles.app}>
-
       <UsersProvider>
+        <Navbar />
         <Router>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/scene" element={<MainScene />} />
+            <Route path="/scene" element={<Scene />} />
+            <Route path="/prediction" element={<Prediction />} />
           </Routes>
         </Router>
       </UsersProvider>

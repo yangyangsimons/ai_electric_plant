@@ -13,7 +13,6 @@ const ModelDisplay = () => {
             console.log(viewer.controls);
             viewer.controls.autoRotate = true;
             viewer.largeSceneLoader2.load(path);
-            x
         }
 
 
