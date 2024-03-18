@@ -64,7 +64,10 @@ function LoginForm(props) {
                             <td><span><PasswordIcon className={styles.icon} /></span><input className={`form-control ${styles.inputStyle}`} placeholder='请输入密码' type="password" value={password} onChange={(e) => setPassword(e.target.value)} /></td>
                         </tr>
                         <tr>
-                            <button type='submit' className={`btn btn-primary ${styles.loginSubmit}`}>登录</button>
+                            <td>
+                                <button type='submit' className={`btn btn-primary ${styles.loginSubmit}`}>登录</button>
+
+                            </td>
                         </tr>
                     </tbody>
                 </table>
