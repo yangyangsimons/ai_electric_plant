@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import UsersContext from '../../context/users/UsersContext';
 import { Menu } from 'antd';
+import Weather from './Weather';
 import { Link } from 'react-router-dom';
 import logo from 'assets/img/logo.png';
 import styles from 'css/navbar.module.scss';
@@ -39,8 +40,7 @@ export default function Navbar() {
                 </li>
             </ul>
             <div className={styles.user}>
-                <Link to='/login'><button>登录</button></Link>
-                <Link to='/register'><button>注册</button></Link>
+                <Weather />
             </div>
         </header>
     );

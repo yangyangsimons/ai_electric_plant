@@ -1,0 +1,14 @@
+.container {
+    border: 1px solid red;
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    ul {
+        width: 200px;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+    }
+}
