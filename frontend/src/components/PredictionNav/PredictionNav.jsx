@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import html2canvas from 'html2canvas';
 import styles from 'css/predictionNav.module.scss';
 import PredictionDrawer from 'components/PredictionDrawer/index';
 import { Button, Drawer } from 'antd';
 export default function Header() {
     const [open, setOpen] = useState(false);
 
+    const screenShot = () => {
+        const element = document.querySelector('canvas');
+        console.log(element);
+        html2canvas(element).then(canvas => {
+            const image = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = image;
+            link.download = 'image.png';
+            link.click();
+        });
+        console.log('截图')
+
+        showDrawer();
+
+    }
     const showDrawer = () => {
         setOpen(true);
     };
@@ -21,8 +36,8 @@ export default function Header() {
                         距离测量
                     </Button>
                 </li>
-                <li class={styles.prediction}>
-                    <Button type="primary" onClick={showDrawer}>
+                <li className={styles.prediction}>
+                    <Button type="primary" onClick={screenShot}>
                         腐蚀预测
                     </Button>
                 </li>
