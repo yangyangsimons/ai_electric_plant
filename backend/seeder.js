@@ -3,47 +3,78 @@ const mongoose = require("mongoose");
 const colors = require("colors");
 const dotenv = require("dotenv");
 const { faker } = require("@faker-js/faker");
-//Load env vars
+
+// Load env vars
 dotenv.config({ path: "./config/config.env" });
 
-// load models
-const user = require("./models/User");
+// Load models
+const User = require("./models/User");
 
-// connect database
-mongoose.connect(process.env.DNS);
+// Handle unhandled promise rejections
+process.on('unhandledRejection', error => {
+  console.error('Unhandled promise rejection:', error);
+  process.exit(1);
+});
 
-// import into db
+// Connect to the database with error handling
+mongoose.connect(process.env.DNS)
+  .then(() => console.log('MongoDB Connected Successfully'.green))
+  .catch(err => {
+    console.error('MongoDB Connection Error:', err);
+    process.exit(1); // Exit if connection fails
+  });
+
+console.log("Seeding data...".yellow);
+
+// Function to import data into the database
 const importData = async () => {
-  const roles = ["user", "publisher"];
-  const userIds = [];
+  try {
+    console.log('Importing data...');
+    const roles = ["user", "publisher"];
 
-  // create users
-  for (i = 1; i < 100; i++) {
-    const userObj = {
-      name: `test${i}`,
-      email: `test${i}@localhost.com`,
-      password: "123456",
-      role: roles[Math.floor(Math.random() * roles.length)],
-    };
-    let u = await user.create(userObj);
+    // Create users
+    for (let i = 1; i <= 100; i++) {
+      const userObj = {
+        name: `test${i}`,
+        email: `test${i}@localhost.com`,
+        password: "123456",
+        role: roles[Math.floor(Math.random() * roles.length)],
+      };
+      await User.create(userObj);
+    }
+    console.log("Data imported".green.inverse);
+  } catch (error) {
+    console.error('Error importing data:', error);
+  } finally {
+    process.exit();
   }
-  // exit from the process
-  console.log("Data imported".green.inverse);
-  process.exit();
 };
 
+// Function to delete data from the database
 const deleteData = async () => {
   try {
-    await user.deleteMany();
+    console.log('Deleting data...');
+    await User.deleteMany();
     console.log("Data destroyed".red.inverse);
-    process.exit();
   } catch (error) {
-    console.log(error.message);
+    console.error('Error deleting data:', error);
+  } finally {
+    process.exit();
   }
 };
 
+// Call the desired function based on command line argument
 if (process.argv[2] === "-i") {
-  importData();
-} else if (process.argv[2] == "-d") {
-  deleteData();
+  importData().catch(err => {
+    console.error('Error during data import:', err);
+    process.exit(1);
+  });
+} else if (process.argv[2] === "-d") {
+  deleteData().catch(err => {
+    console.error('Error during data deletion:', err);
+    process.exit(1);
+  });
+} else {
+  console.log("Invalid command. Use -i to import data or -d to delete data.".red);
+  process.exit(1);
 }
