@@ -8,11 +8,11 @@ import Scene from "./Layout/Scene";
 import Main from "./Layout/Main";
 import Prediction from "./Layout/Prediction";
 
+
 export default function App() {
   return (
     <div className={styles.app}>
       <UsersProvider>
-
         <Router>
           <Navbar />
           <Routes>

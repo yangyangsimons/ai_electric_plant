@@ -4,10 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-
+import store from 'stores/store';
 // import store from './stores/store';
 createRoot(document.getElementById('root')).render(
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
 
 );
 reportWebVitals();

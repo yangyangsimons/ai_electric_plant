@@ -5,6 +5,7 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "@react-three/fiber": "^8.15.19",
+    "@reduxjs/toolkit": "^2.2.2",
     "antd": "^5.15.0",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",

@@ -37,7 +37,7 @@ export default function Weather() {
             plugins: ['AMap.Weather'],
         }).then((AMap) => {
             const weather = new AMap.Weather();
-            weather.getLive('长沙市', (err, data) => {
+            weather.getLive('441500', (err, data) => {
                 if (!err) {
                     const { temperature, weather } = data;
                     setTemperatureNumber(temperature);

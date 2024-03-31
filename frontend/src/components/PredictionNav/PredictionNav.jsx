@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import html2canvas from 'html2canvas';
 import styles from 'css/predictionNav.module.scss';
 import PredictionDrawer from 'components/PredictionDrawer/index';
 import { Button, Drawer } from 'antd';
-export default function Header() {
+import { useDispatch } from 'react-redux';
+import { setImageSrc } from 'stores/screenShotSlice';
+export default function PredictionNav() {
     const [open, setOpen] = useState(false);
-
+    const dispatch = useDispatch();
     const screenShot = () => {
-        const element = document.querySelector('canvas');
-        console.log(element);
-        html2canvas(element).then(canvas => {
-            const image = canvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            link.href = image;
-            link.download = 'image.png';
-            link.click();
-        });
-        console.log('截图')
+        const img = new Image();
+        const imgSrc = window.AMRT.ScreenHelper.screenShot(window.viewer);
+        dispatch(setImageSrc(imgSrc));
+        //在新的窗口打开
+        console.log("dispatch", imgSrc);
 
         showDrawer();
 
@@ -42,7 +38,7 @@ export default function Header() {
                     </Button>
                 </li>
             </ul>
-            <Drawer title="Basic Drawer" onClose={onClose} open={open}>
+            <Drawer title="腐蚀检测" onClose={onClose} open={open}>
                 <PredictionDrawer />
             </Drawer>
         </div>
