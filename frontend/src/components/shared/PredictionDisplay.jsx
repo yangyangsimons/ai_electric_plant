@@ -11,8 +11,8 @@ const PredictionDisplay = () => {
             const viewer = new window.AMRT.Viewer('container', { offline: true });
             window.viewer = viewer;
             const path = 'http://localhost:5001/static/1768839893078904832_AMRT';
-            viewer.largeSceneLoader2.load(path);
-
+            const model = viewer.largeSceneLoader2.load(path);
+            window.model = model;
         }
 
 
