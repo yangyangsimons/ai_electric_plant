@@ -8,9 +8,9 @@ const ModelDisplay = () => {
         // 检查容器是否已经挂载
 
         if (containerRef.current) {
-
+            const baseUrl = window.location.origin;
             const viewer = new window.AMRT.Viewer('container', { offline: true });
-            const path = 'http://localhost:5001/static/1763576691151736832_AMRT';
+            const path = `${baseUrl}/static/1763576691151736832_AMRT`;
             console.log(viewer.controls);
             viewer.controls.autoRotate = true;
             viewer.largeSceneLoader2.load(path);
