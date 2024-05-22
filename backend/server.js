@@ -15,10 +15,7 @@ const db = require("./config/db");
 const app = express();
 
 // cors
-app.use(cors({
-  origin: 'http://localhost:3000'
-}));
-
+app.use(cors());
 // body parser
 app.use(express.json())
 
@@ -34,6 +31,8 @@ if (process.env.NODE_ENV === "development") {
 // cookie
 app.use(cookieParser());
 
+// Static middleware to serve the React build folder
+app.use(express.static(path.join(__dirname, 'build')));
 // route files
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
