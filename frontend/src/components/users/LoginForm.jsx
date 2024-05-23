@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import styles from 'css/loginForm.module.scss'
 import { ReactComponent as UserIcon } from 'assets/icon/user.svg';
 import { ReactComponent as PasswordIcon } from 'assets/icon/password.svg';
+
+
 function LoginForm(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -35,7 +37,7 @@ function LoginForm(props) {
                 //setUser(x);
                 console.log(user);
                 toast.success("User Logged in");
-                navigate("/members-area");
+                navigate("/scene");
             } else {
                 toast.error("Invalid email or password");
             }
