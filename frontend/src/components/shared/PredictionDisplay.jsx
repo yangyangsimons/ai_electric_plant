@@ -8,7 +8,13 @@ const PredictionDisplay = () => {
         // 检查容器是否已经挂载
 
         if (containerRef.current) {
-            const baseUrl = window.location.origin;
+            //if window.location.origin is http://localhost:3000
+            //then baseUrl is http://localhost:5001
+            let baseUrl = window.location.origin;
+            if (window.location.origin === 'http://localhost:3000') {
+                baseUrl = 'http://localhost:5001';
+            }
+            console.log(baseUrl)
             const viewer = new window.AMRT.Viewer('container', { offline: true });
             window.viewer = viewer;
             const path = `${baseUrl}/static/1768839893078904832_AMRT`;
