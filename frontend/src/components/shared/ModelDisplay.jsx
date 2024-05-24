@@ -17,10 +17,16 @@ const ModelDisplay = () => {
             console.log(baseUrl)
             const viewer = new window.AMRT.Viewer('container', { offline: true });
             const path = `${baseUrl}/static/1763576691151736832_AMRT`;
-            console.log(viewer.controls);
-            console.log()
+            console.log(viewer.effectManager);
+            setTimeout(() => {
+                if (window.weatherCondition.includes('雨')) {
+                    viewer.effectManager.addRain();
+                }
+            }, 5000);
+
             viewer.controls.autoRotate = true;
             viewer.largeSceneLoader2.load(path);
+
         }
 
     }, []);

@@ -20,6 +20,7 @@ const PredictionDisplay = () => {
             const path = `${baseUrl}/static/1768839893078904832_AMRT`;
             const model = viewer.largeSceneLoader2.load(path);
             window.model = model;
+
         }
 
 

@@ -42,11 +42,12 @@ export default function Weather() {
                     const { temperature, weather } = data;
                     setTemperatureNumber(temperature);
                     console.log(weatherStr)
+                    window.weatherCondition = weather;
                     setWeatherStr(weather);
                 }
             });
         });
-    }, []);
+    }, [weatherStr]);
     return (
         <div className={styles.weatherTimeContainer}>
             <div className={styles.timeContianer}>
