@@ -5,7 +5,7 @@ const ModelDisplay = () => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        // 检查容器是否已经挂载
+        // 检查容器是否已经挂载重新
 
         if (containerRef.current) {
             //if window.location.origin is http://localhost:3000

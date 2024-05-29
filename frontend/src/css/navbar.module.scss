@@ -3,7 +3,8 @@
     line-height: 96x;
 }
 .header {
-    background-color: #130c2d;
+    background: rgba(69, 85, 104, 0.9) url("../assets/img/header.png") no-repeat center center;
+    background-size: cover;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -14,6 +15,7 @@
     top: 0;
     left: 0;
     z-index: 5;
+    border-radius: 5px;
     @include heightAlign;
     .logoContainer {
         display: flex;
@@ -32,7 +34,7 @@
     .menu {
         position: absolute;
         top: 0;
-        left: 30%;
+        left: 32%;
         height: 100%;
         display: flex;
         gap: 3rem;
