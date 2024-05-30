@@ -1,28 +1,9 @@
-import React, { useState, useContext } from 'react';
-import UsersContext from '../../context/users/UsersContext';
-import { Menu } from 'antd';
 import Weather from './Weather';
 import { Link } from 'react-router-dom';
 import logo from 'assets/img/logo.png';
 import styles from 'css/navbar.module.scss';
 export default function Navbar() {
-    const [active, setActive] = useState('default');
-    const { user } = useContext(UsersContext);
-    const [current, setCurrent] = useState('mail');
-    const items = [
-        {
-            label: 'Navigation One',
-            key: 'mail',
-        },
-        {
-            label: 'Navigation Two',
-            key: 'app',
-            disabled: true,
-        }]
-    const onClick = (e) => {
-        console.log('click ', e);
-        setCurrent(e.key);
-    }
+
     return (
         <header className={styles.header}>
             <div className={styles.logoContainer}>
@@ -33,10 +14,10 @@ export default function Navbar() {
             </div>
             <ul className={styles.menu}>
                 <li>
-                    <Link to='/'>首页</Link>
+                    <Link to='/'>登录</Link>
                 </li>
                 <li>
-                    <Link to='/scene'>场景</Link>
+                    <Link to='/scene'>监测</Link>
                 </li>
             </ul>
             <div className={styles.user}>
