@@ -10,7 +10,7 @@ export const signUp = async (email, password, firstname, lastname) => {
     });
     const data = await res.data;
     return data;
-  } catch (err) {    
+  } catch (err) {
     console.log(err.response);
     return err.response;
   }
@@ -18,7 +18,7 @@ export const signUp = async (email, password, firstname, lastname) => {
 
 export const signIn = async (email, password) => {
   //const params = new URLSearchParams({ email, password });
-  let res = await AxiosHTTP.post("/auth/login", {
+  let res = await AxiosHTTP.post("/api/v1/auth/login", {
     email,
     password,
   }); //signin or login both are valid
@@ -33,7 +33,7 @@ export const logoutAction = () => {
 
 export const saveProfile = async (first_name, last_name, token) => {
   let res = await AxiosHTTP.put(
-    "/profile",
+    "/api/v1/profile",
     { firstname: first_name, lastname: last_name },
     {
       headers: {
@@ -46,7 +46,7 @@ export const saveProfile = async (first_name, last_name, token) => {
 };
 
 export const getProfile = async (token) => {
-  let res = await AxiosHTTP.get("/profile", {
+  let res = await AxiosHTTP.get("/api/v1/profile", {
     headers: { Authorization: `Bearer ${token}` },
   });
   const data = await res.data;
