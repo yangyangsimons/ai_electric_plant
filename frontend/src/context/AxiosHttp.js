@@ -6,4 +6,4 @@ if (window.location.origin === 'http://localhost:3000') {
 const AxiosHTTP = axios.create({
     baseURL: baseUrl,
 });
-export default AxiosHTTP;
+export default AxiosHTTP; 

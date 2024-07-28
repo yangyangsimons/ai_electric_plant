@@ -16,7 +16,7 @@ const ModelDisplay = () => {
             }
             console.log(baseUrl)
             const viewer = new window.AMRT.Viewer('container', { offline: true });
-            const path = `${baseUrl}/static/1763576691151736832_AMRT`;
+            const path = `${baseUrl}/static/1816622778200231936_AMRT`;
             window.viewer = viewer;
             console.log(viewer.effectManager);
             setTimeout(() => {
