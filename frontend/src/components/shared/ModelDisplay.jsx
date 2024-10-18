@@ -25,7 +25,7 @@ const ModelDisplay = () => {
                 }
             }, 5000);
 
-            viewer.controls.autoRotate = true;
+            viewer.controls.autoRotate = false;
             viewer.largeSceneLoader2.load(path);
 
         }
