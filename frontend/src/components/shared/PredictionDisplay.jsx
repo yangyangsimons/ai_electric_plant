@@ -17,9 +17,17 @@ const PredictionDisplay = () => {
             console.log(baseUrl)
             const viewer = new window.AMRT.Viewer('container', { offline: true });
             window.viewer = viewer;
-            const path = `${baseUrl}/static/1763576691151736832_AMRT`;
-            const model = viewer.largeSceneLoader2.load(path);
+            let path = `${baseUrl}/static/phase1_AMRT`;
+            let path2 = `${baseUrl}/static/phase2_AMRT`;
+            let path3 = `${baseUrl}/static/phase3_AMRT`;
+            let model2 = viewer.largeSceneLoader2.load(path2);
+            let model3 = viewer.largeSceneLoader2.load(path3);
+            let model = viewer.largeSceneLoader2.load(path);
+
+            window.model2 = model2;
+            window.model3 = model3;
             window.model = model;
+
 
         }
 
