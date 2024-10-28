@@ -8,8 +8,8 @@ import { Slider } from 'antd';
 
 export default function Prediction() {
     const marks = {
-        7: '7月',
-        8: '8月',
+        7: '3月',
+        8: '6月',
         9: '9月',
     }
     const onChangeComplete = (value) => {

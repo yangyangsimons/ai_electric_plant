@@ -8,18 +8,20 @@ import { setImageSrc } from 'stores/screenShotSlice';
 import { Tooltip } from 'antd';
 
 export default function PredictionNav() {
-    let measure3DTool = window.viewer.basicEditor.measure3DTool;
-    //设置地心坐标（用于高度测量）x
-    measure3DTool.earthsCoreVec = { x: 0, y: -6371393, z: 0 };
-    //测量颜色
-    measure3DTool.measureColor = '#FFFF00';
-    //测量显示单位
-    measure3DTool.measureUnit = 'm';
-    //测量小数有效位数
-    measure3DTool.measureDecimalPlaces = 2;
+
 
     //测量距离
     const measureDistance = () => {
+        let measure3DTool = window.viewer.basicEditor.measure3DTool;
+        //设置地心坐标（用于高度测量）x
+
+        measure3DTool.earthsCoreVec = { x: 0, y: -6371393, z: 0 };
+        //测量颜色
+        measure3DTool.measureColor = '#FFFF00';
+        //测量显示单位
+        measure3DTool.measureUnit = 'm';
+        //测量小数有效位数
+        measure3DTool.measureDecimalPlaces = 2;
         measure3DTool.distanceMeasure();
     }
 
@@ -55,7 +57,7 @@ export default function PredictionNav() {
             <ul className={styles.navLeft}>
                 <li>
                     <Tooltip title="测量两点之间的距离">
-                        <Button type="primary" onClick={showMeasureDrawer}>
+                        <Button type="primary" onClick={measureDistance}>
                             距离测量
                         </Button>
                     </Tooltip >
