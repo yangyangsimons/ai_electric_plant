@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import LeftNav from 'components/shared/LeftNav';
 import PredictionNav from 'components/PredictionNav/PredictionNav';
-import PredictionDisplay from 'components/shared/PredictionDisplay';
+// import PredictionDisplay from 'components/shared/PredictionDisplay';
 import styles from 'css/scene.module.scss';
 import { Slider } from 'antd';
 
@@ -30,7 +30,7 @@ export default function Prediction() {
     return (
         <div className={styles.main}>
             <LeftNav />
-            <PredictionDisplay />
+            {/* <PredictionDisplay /> */}
             <PredictionNav />
             <Slider className={styles.sliderContainer} marks={marks} step={null} defaultValue={7} min={6} max={10} onChangeComplete={onChangeComplete} />
         </div>

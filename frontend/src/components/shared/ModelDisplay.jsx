@@ -7,6 +7,7 @@ const ModelDisplay = () => {
     useEffect(() => {
         // 检查容器是否已经挂载重新
 
+        
         if (containerRef.current) {
             //if window.location.origin is http://localhost:3000
             //then baseUrl is http://localhost:5001
