@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react';
 import LeftNav from 'components/shared/LeftNav';
 import Overview from './Overview/Overview';
 import ModelDisplay from 'components/shared/ModelDisplay';
@@ -7,6 +7,16 @@ import styles from 'css/scene.module.scss';
 import Curve from 'components/Curve/Curve';
 import Portion from 'components/Portion/Portion';
 export default function Scene() {
+
+    const  [showCesium, setShowCesium] = useState(true);
+
+    const handleContextLost = () => {
+        console.warn('WebGL context lost');
+        setShowCesium(false);
+        setTimeout(() => {
+            setShowCesium(true);
+        }, 1000);
+    }
     return (
         <div className={styles.main}>
             <LeftNav />
@@ -15,7 +25,7 @@ export default function Scene() {
                 <Curve />
                 <Portion />
             </div>
-            <CesiumView />
+            {showCesium && <CesiumView onContextLost = {handleContextLost}/>}
             {/* <ModelDisplay /> */}
         </div>
     )

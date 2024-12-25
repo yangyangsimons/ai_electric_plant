@@ -58,7 +58,7 @@ const ModelDisplay = () => {
         tileset._root.transform = transform;
 
   }
-  const add3DTiles = (viewer, url, longitude, latitude, height) => {
+  const add3DTiles = (viewer, url, longitude, latitude, height, rotateX=90, rotateY = 90, rotateZ = 0, ) => {
     console.log('this is the url',url);
     console.log('viewer',viewer);
     console.log('view.scene',viewer.scene.primitives);
@@ -66,13 +66,14 @@ const ModelDisplay = () => {
         new Cesium.Cesium3DTileset({
         url: url,
         maximumScreenSpaceError: 2,
-        maximumMemoryUsage: 512
+        maximumMemoryUsage: 5120
       })
     );
     tileset.readyPromise.then(tileset => {
       tileSet(tileset, longitude, latitude, height);
       viewer.zoomTo(tileset);
-    });
+      console.log('Tileset loaded successfully.');
+  })
   }
 
 
@@ -126,13 +127,44 @@ const ModelDisplay = () => {
 
     // 加载3dtiles数据
     console.log('this is the loading url sources',`${baseUrl}/static/tileset.json`);
-    add3DTiles(viewer, `${baseUrl}/static/tileset.json`, 121.479394, 29.791416, 3);
+    add3DTiles(viewer, `${baseUrl}/static/tileset.json`, 115.18508, 22.76195, 3);
 
     return () => {
-   
+      if (cesiumViewerRef.current) {
+        cesiumViewerRef.current.destroy();
+        cesiumViewerRef.current = null;
+      }
     };
   }, []);
   
+  useEffect(() => {
+    if (cesiumViewerRef.current) {
+      const canvas = cesiumViewerRef.current.scene.canvas;
+  
+      const onContextLost = (event) => {
+        event.preventDefault();
+        console.warn('WebGL context lost');
+        // 此时渲染会停止
+      };
+  
+      const onContextRestored = () => {
+        console.warn('WebGL context restored');
+        // 在此处进行资源重建或强制重新加载，例如:
+        // 1. 清理现有的模型/tiles数据后重新add3DTiles
+        // 2. 强制requestRender以重新渲染场景
+        add3DTiles(cesiumViewerRef.current, `${baseUrl}/static/tileset.json`, 121.479394, 29.791416, 3,0,0,0);
+        cesiumViewerRef.current.scene.requestRender();
+      };
+  
+      canvas.addEventListener('webglcontextlost', onContextLost, false);
+      canvas.addEventListener('webglcontextrestored', onContextRestored, false);
+  
+      return () => {
+        canvas.removeEventListener('webglcontextlost', onContextLost);
+        canvas.removeEventListener('webglcontextrestored', onContextRestored);
+      };
+    }
+  }, [cesiumViewerRef.current]);
 
     return <div id='container' ref={viewerRef} style={{ width: '100%', height: '100%', position: 'absolute', left: 0, top: 0 }} />;
 };
