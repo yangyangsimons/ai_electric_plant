@@ -35,29 +35,29 @@ const ModelDisplay = () => {
   }
 
   // 可选：如果需要tileSetAll函数也可以在这里定义
-  const tileSetAll = (tileset,longitude,latitude,height,rotateX,rotateY,rotateZ,scale) =>
-  {
-        //旋转角度设置
-        var mx = Cesium.Matrix3.fromRotationX(Cesium.Math.toRadians(rotateX));
-        var my = Cesium.Matrix3.fromRotationY(Cesium.Math.toRadians(rotateY));
-        var mz = Cesium.Matrix3.fromRotationZ(Cesium.Math.toRadians(rotateZ));
-        var rotationX = Cesium.Matrix4.fromRotationTranslation(mx);
-        var rotationY = Cesium.Matrix4.fromRotationTranslation(my);
-        var rotationZ = Cesium.Matrix4.fromRotationTranslation(mz);
-        //平移 修改经纬度
-        var position = Cesium.Cartesian3.fromDegrees(longitude,latitude,height);
-        var transform = Cesium.Transforms.eastNorthUpToFixedFrame(position);
-        //旋转、平移矩阵相乘
-        Cesium.Matrix4.multiply(transform, rotationX, transform);
-        Cesium.Matrix4.multiply(transform, rotationY, transform);
-        Cesium.Matrix4.multiply(transform, rotationZ, transform);
-        //缩放 修改缩放比例
-        var scale1 = Cesium.Matrix4.fromUniformScale(scale);
-        Cesium.Matrix4.multiply(transform, scale1, transform);
-        //赋值给tileset
-        tileset._root.transform = transform;
+  // const tileSetAll = (tileset,longitude,latitude,height,rotateX,rotateY,rotateZ,scale) =>
+  // {
+  //       //旋转角度设置
+  //       var mx = Cesium.Matrix3.fromRotationX(Cesium.Math.toRadians(rotateX));
+  //       var my = Cesium.Matrix3.fromRotationY(Cesium.Math.toRadians(rotateY));
+  //       var mz = Cesium.Matrix3.fromRotationZ(Cesium.Math.toRadians(rotateZ));
+  //       var rotationX = Cesium.Matrix4.fromRotationTranslation(mx);
+  //       var rotationY = Cesium.Matrix4.fromRotationTranslation(my);
+  //       var rotationZ = Cesium.Matrix4.fromRotationTranslation(mz);
+  //       //平移 修改经纬度
+  //       var position = Cesium.Cartesian3.fromDegrees(longitude,latitude,height);
+  //       var transform = Cesium.Transforms.eastNorthUpToFixedFrame(position);
+  //       //旋转、平移矩阵相乘
+  //       Cesium.Matrix4.multiply(transform, rotationX, transform);
+  //       Cesium.Matrix4.multiply(transform, rotationY, transform);
+  //       Cesium.Matrix4.multiply(transform, rotationZ, transform);
+  //       //缩放 修改缩放比例
+  //       var scale1 = Cesium.Matrix4.fromUniformScale(scale);
+  //       Cesium.Matrix4.multiply(transform, scale1, transform);
+  //       //赋值给tileset
+  //       tileset._root.transform = transform;
 
-  }
+  // }
   const add3DTiles = (viewer, url, longitude, latitude, height, rotateX=90, rotateY = 90, rotateZ = 0, ) => {
     console.log('this is the url',url);
     console.log('viewer',viewer);
@@ -127,7 +127,7 @@ const ModelDisplay = () => {
 
     // 加载3dtiles数据
     console.log('this is the loading url sources',`${baseUrl}/static/tileset.json`);
-    add3DTiles(viewer, `${baseUrl}/static/tileset.json`, 115.18508, 22.76195, 3);
+    add3DTiles(viewer, `${baseUrl}/static/tileset.json`, 115.554430, 22.705700, -12.5);
 
     return () => {
       if (cesiumViewerRef.current) {

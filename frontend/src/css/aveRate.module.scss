@@ -1,0 +1,26 @@
+@use "./common.scss" as common;
+.aveRate {
+    @include common.bottomElementSize;
+    z-index: 100;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+    .title {
+        @include common.bottomElementTitle;
+        width: 100%;
+        text-align: center;
+        height: 24px;
+        margin: 5px 5px;
+        background-color: rgba(28, 42, 71, 0.1);
+    }
+    .content {
+        width: 100%;
+        height: 100%;
+        div {
+            width: 100%;
+        }
+    }
+}
